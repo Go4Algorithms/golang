@@ -59,7 +59,7 @@ func minDistance( distance[]int,includedSet[]bool, nrVertices int)(int) {
 }
 
 
-//this function returns the distances between each vertex
+//this function returns the distances between each vertex and the source
 func dijkstraDistance(graph[][]int,src int)([]int) {
 	var nrVertices int
 	//check if it's a for this prupose valid matrix
