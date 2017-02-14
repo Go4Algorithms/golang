@@ -6,10 +6,14 @@ type SimpleQueue struct {
 }
 
 func New() SimpleQueue {
-	sq := SimpleQueue{}
+  sq := SimpleQueue{}
   sq.arr = make([]int, 5)
   sq.top = 0
   return sq
+}
+
+func (sq *SimpleQueue) IsEmpty() bool {
+  return sq.top == 0
 }
 
 func (sq *SimpleQueue) Push(num int) {
@@ -22,9 +26,9 @@ func (sq *SimpleQueue) Push(num int) {
 
 func (sq *SimpleQueue) Pop() int {
   if (sq.top > 0) {
-		for i := 0; i < len(sq.arr) - 1; i++ {
-			sq.arr[i] = sq.arr[i + 1]
-		}
+    for i := 0; i < len(sq.arr) - 1; i++ {
+      sq.arr[i] = sq.arr[i + 1]
+    }
     sq.top--
     return sq.arr[0]
   }
