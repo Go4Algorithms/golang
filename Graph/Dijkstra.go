@@ -1,13 +1,11 @@
 package graph
-
+//dijkstra's single shortest path algorithm
 import(
 	"fmt"
 	"math"
 )
-//Right now it returns the shortest distances to each vertex as an array.
-//Also the input is a matrix. I'm going to adapt it so it will work with
-//the graph structs together
 
+//function that returns the edges used for the shortest path
 func dijkstraEdges(g *Graph, source *Node)([]Edge){
     var nrVertices,src int
     nrVertices = len(g.Nodes)
@@ -60,8 +58,8 @@ func minDistance( distance[]int,includedSet[]bool, nrVertices int)(int) {
 	return minIndex
 }
 
-//dijkstra's single shortest path algorithm
-//the graph has the distances between each vertex
+
+//this function returns the distances between each vertex
 func dijkstraDistance(graph[][]int,src int)([]int) {
 	var nrVertices int
 	//check if it's a for this prupose valid matrix
