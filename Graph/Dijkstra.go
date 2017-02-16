@@ -1,7 +1,6 @@
 package graph
 //dijkstra's single shortest path algorithm
 import(
-	"fmt"
 	"math"
 )
 
