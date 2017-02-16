@@ -23,8 +23,48 @@ type Graph struct {
 	Nodes [] Node
 	Edges [] Edge
 	Directed bool
-	Matrix [][] float64
+	Matrix [][] int
 }
+
+func newGraph(name string, directed bool, nodes[]Node,edges[]Edge)*Graph {
+	var g = new (Graph)
+	g.Name = name
+	g.Directed = directed
+	g.Nodes = nodes
+	for i,n := range g.Nodes {
+		n.ID = i
+	}
+	g.Edges = edges
+	for i,e:= range g.Edges {
+		e.ID = i
+	}
+	g.Matrix = CreateWeightedGraphMatrix(g)
+	return g
+}
+
+//creates a matrix with all the weights. Useful for shortest path and MST
+func CreateWeightedGraphMatrix (g *Graph)[][]int {
+    gm := make([][]int,len(g.Nodes))
+    for i:= range gm {
+        gm[i] = make([]int,len(g.Nodes))
+    }
+    for row:= range gm {
+        for col:= range gm {
+            gm[row][col] = 0
+        }
+    }
+    for _,e:= range g.Edges {
+	if !g.Directed{
+		gm[e.To.ID][e.From.ID] = e.Weight 
+	}
+        gm[e.From.ID][e.To.ID] = e.Weight
+    }
+    return gm
+}
+
+
+
+
 
 
 func CreateVisitToAsia() ( *Graph ) {
@@ -154,24 +194,6 @@ func CreatePageRankSample() ( *Graph) {
 	g.Edges = [] Edge {*P1P2, *P1P3, *P3P1, *P3P2, *P3P5, *P4P5, *P4P6, *P5P4, *P5P6, *P6P4 }
 
 	return g
-}
-
-
-//creates a matrix with all the weights. Useful for shortest path and MST
-func CreateWeightedGraphMatrix (g *Graph)[][]int {
-    gm := make([][]int,len(g.Nodes))
-    for i:= range gm {
-        gm[i] = make([]int,len(g.Nodes))
-    }
-    for row:= range gm {
-        for col:= range gm {
-            gm[row][col] = 0
-        }
-    }
-    for _,e:= range g.Edges {
-        gm[e.From.ID][e.To.ID] = e.Weight
-    }
-    return gm
 }
 
 func CreateTransitionMatrix ( g *Graph ) {
