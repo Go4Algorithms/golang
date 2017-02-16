@@ -6,7 +6,10 @@ import(
     )
     
 func BreadthFirstSearch(g *Graph, source int)([]int){
-	return BreadthFirstSearch(g.Matrix,source)
+	if g.Weighted {
+		return BreadthFirstSearch(g.Matrix,source)
+	}
+	return nil
 }
 //Breadth First Search Algorithms
 //function that returns the distance to each Vertex
