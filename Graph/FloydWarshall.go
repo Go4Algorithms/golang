@@ -3,7 +3,11 @@ import(
 	"math"
 )
 //returns the shortest distance between each pair of nodes
-func floydWarshall(graph[][]int)[][]int {
+func FloydWarshall(g *Graph)[][]int {
+	return FloydWarshall(g.Matrix)
+}
+
+func FloydWarshall(graph [][])[][]int {
 	var nrVertices int
 	//check if it's a for this purpose valid matrix
 	if len(graph[0]) == len(graph) {
