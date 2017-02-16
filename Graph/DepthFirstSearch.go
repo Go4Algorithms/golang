@@ -21,7 +21,7 @@ func DepthFirstSearch(graph [][]int, source int)([]int){
         visited[i] = false
     }
     stack = p_SimpleStack.New()
-    return dfs(graph,source,distances,visited)
+    return dfs(graph,source,distances,visited,stack)
 }
 
 func dfs(graph[][]int, node int, distances[]int, visited[]bool, stack SimpleStack)([]int) {
