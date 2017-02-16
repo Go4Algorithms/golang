@@ -1,4 +1,6 @@
 package graph
+//methods to add nodes and edges are needed
+
 
 // go get github.com/gonum/matrix
 // userID = JuanVargas
