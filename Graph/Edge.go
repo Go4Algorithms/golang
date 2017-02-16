@@ -10,30 +10,22 @@ type Edge struct {
 }
 
 //edge with weight
-func newEdge_2(from *Node, to *Node, argName string, weight int)*Edge {
+func newWeightedEdge(from *Node, to *Node, directed bool, argName string, weight int)*Edge {
     var r = new (Edge)
 	r.Name = argName
+	r.Directed = directed
 	r.From = from
 	r.To = to
 	r.Weight = weight
 	return r
-
-}
-
-func newEdge_1 ( argName string) *Edge {
-	var r = new (Edge)
-	r.Name = argName
-	return r
-
 }
 
 // newEdge ( from, to, argName)
-func newEdge ( from *Node, to *Node, argName string) *Edge {
+func newEdge ( from *Node, to *Node, directed bool, argName string) *Edge {
 	var r = new (Edge)
 	r.Name = argName
 	r.From = from
 	r.To = to
 	return r
-
 }
 
