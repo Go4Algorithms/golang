@@ -4,7 +4,10 @@ import(
 )
 //returns the shortest distance between each pair of nodes
 func FloydWarshall(g *Graph)[][]int {
-	return FloydWarshall(g.Matrix)
+	if g.Weighted {
+		return FloydWarshall(g.Matrix)
+	}
+	return nil
 }
 
 func FloydWarshall(graph [][])[][]int {
