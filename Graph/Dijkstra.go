@@ -6,7 +6,7 @@ import(
 )
 
 //function that returns the edges used for the shortest path
-func dijkstraEdges(g *Graph, source *Node)([]Edge){
+func DijkstraEdges(g *Graph, source *Node)([]Edge){
     var nrVertices,src int
     nrVertices = len(g.Nodes)
     for i:=0; i<nrVertices; i++ {
@@ -18,7 +18,7 @@ func dijkstraEdges(g *Graph, source *Node)([]Edge){
     var pickedUpEdges = make([]Edge, nrVertices-1)
     var distance = make([]int,nrVertices) 
 	var includedSet = make([]bool,nrVertices)
-	graph := CreateWeightedGraphMatrix(g)
+	graph := g.Matrix
     for i:=0; i<nrVertices;i++ {
 		distance[i] = math.MaxInt32
 		includedSet[i] = false
@@ -58,9 +58,11 @@ func minDistance( distance[]int,includedSet[]bool, nrVertices int)(int) {
 	return minIndex
 }
 
-
+func DijkstraDistance(g *Graph, src int)([]int){
+	return DijkstraDistance(g.Matrix, src)
+}
 //this function returns the distances between each vertex and the source
-func dijkstraDistance(graph[][]int,src int)([]int) {
+func DijkstraDistance(graph[][]int,src int)([]int) {
 	var nrVertices int
 	//check if it's a for this prupose valid matrix
 	if len(graph[0]) == len(graph) {
