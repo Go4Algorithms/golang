@@ -5,6 +5,9 @@ import(
     "math"
     )
     
+func BreadthFirstSearch(g *Graph, source int)([]int){
+	return BreadthFirstSearch(g.Matrix,source)
+}
 //Breadth First Search Algorithms
 //function that returns the distance to each Vertex
 func BreadthFirstSearch(graph[][]int,source int)([]int){
