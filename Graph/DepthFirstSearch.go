@@ -5,6 +5,9 @@ import(
     "math"
     )
     
+func DepthFirstSearch(g *Graph, source int)([]int){
+	return DepthFirstSearch(g.Matrix, source)
+}
 //function that returns the depth of each node
 func DepthFirstSearch(graph [][]int, source int)([]int){
     var nrVertices int
