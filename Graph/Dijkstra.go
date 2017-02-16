@@ -7,6 +7,9 @@ import(
 
 //function that returns the edges used for the shortest path
 func DijkstraEdges(g *Graph, source *Node)([]Edge){
+	if !g.Weighted {
+		return nil
+	}
     var nrVertices,src int
     nrVertices = len(g.Nodes)
     for i:=0; i<nrVertices; i++ {
@@ -59,7 +62,10 @@ func minDistance( distance[]int,includedSet[]bool, nrVertices int)(int) {
 }
 
 func DijkstraDistance(g *Graph, src int)([]int){
-	return DijkstraDistance(g.Matrix, src)
+	if g.Weighted {
+		return DijkstraDistance(g.Matrix, src)
+	}
+	return nil
 }
 //this function returns the distances between each vertex and the source
 func DijkstraDistance(graph[][]int,src int)([]int) {
