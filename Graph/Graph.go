@@ -22,11 +22,12 @@ type Graph struct {
 	Desc string
 	Nodes [] Node
 	Edges [] Edge
+	Weighted bool
 	Directed bool
 	Matrix [][] int
 }
 
-func newGraph(name string, directed bool, nodes[]Node,edges[]Edge)*Graph {
+func newGraph(name string, directed bool, weighted bool, nodes[]Node,edges[]Edge)*Graph {
 	var g = new (Graph)
 	g.Name = name
 	g.Directed = directed
@@ -38,12 +39,14 @@ func newGraph(name string, directed bool, nodes[]Node,edges[]Edge)*Graph {
 	for i,e:= range g.Edges {
 		e.ID = i
 	}
-	g.Matrix = CreateWeightedGraphMatrix(g)
+	if Weighted {
+		g.Matrix = CreateWeightedGraphMatrix(g)
+	}
 	return g
 }
 
 //creates a matrix with all the weights. Useful for shortest path and MST
-func CreateWeightedGraphMatrix (g *Graph)[][]int {
+func createWeightedGraphMatrix (g *Graph)[][]int {
     gm := make([][]int,len(g.Nodes))
     for i:= range gm {
         gm[i] = make([]int,len(g.Nodes))
