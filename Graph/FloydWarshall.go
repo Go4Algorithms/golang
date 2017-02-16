@@ -2,7 +2,7 @@ package graph
 
 func floydWarshall(graph[][]int)[][]int {
 	var nrVertices int
-	//check if it's a for this prupose valid matrix
+	//check if it's a for this purpose valid matrix
 	if len(graph[0]) == len(graph) {
 		nrVertices = len(graph)
 	} else {
