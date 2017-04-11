@@ -9,14 +9,15 @@ type Node struct {
 }
 
 
-func newNode ( argName string) *Node {
+func NewNode ( argName string, id int) *Node {
 	var r = new (Node)
 	r.Name = argName
+	r.ID = id
 	return r
 }
 
 
-func describeNode( n *Node) {
+func DescribeNode( n *Node) {
 	fmt.Printf("Node Name=" + n.Name)
 }
 

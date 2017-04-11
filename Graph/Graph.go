@@ -2,9 +2,6 @@ package graph
 
 import (
 	"fmt"
-	"strconv"
-	"math/rand"
-	"time"
 )
 
 
@@ -18,20 +15,15 @@ type Graph struct {
 	Matrix [][] int
 }
 
-func newGraph(name string, directed bool, weighted bool, nodes[]Node,edges[]Edge)*Graph {
+func NewGraph(name string, directed bool, weighted bool, nodes[]Node,edges[]Edge)*Graph {
 	var g = new (Graph)
 	g.Name = name
 	g.Directed = directed
 	g.Nodes = nodes
-	for i,n := range g.Nodes {
-		n.ID = i
-	}
 	g.Edges = edges
-	for i,e:= range g.Edges {
-		e.ID = i
-	}
-	if Weighted {
-		g.Matrix = CreateWeightedGraphMatrix(g)
+	g.Weighted = weighted
+	if weighted {
+		g.Matrix = createWeightedGraphMatrix(g)
 	}
 	return g
 }
@@ -48,7 +40,7 @@ func createWeightedGraphMatrix (g *Graph)[][]int {
         }
     }
     for _,e:= range g.Edges {
-	if !g.Directed{
+	    if !g.Directed{
 		gm[e.To.ID][e.From.ID] = e.Weight 
 	}
         gm[e.From.ID][e.To.ID] = e.Weight

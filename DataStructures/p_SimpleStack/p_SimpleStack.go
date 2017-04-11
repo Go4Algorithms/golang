@@ -13,7 +13,7 @@ func New() SimpleStack {
 }
 
 func (sq *SimpleStack) IsEmpty() bool {
-  return top == 0
+  return sq.top == 0
 }
 
 func (ss *SimpleStack) Push(num int) {
